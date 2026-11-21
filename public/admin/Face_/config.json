@@ -1,0 +1,7 @@
+{
+	"recognition_url": "http://127.0.0.1:5500/recognize",
+	"db_host": "mysql-8.4",
+	"db_user": "root",
+	"db_password": "",
+	"db_database": "face_recognition"
+}

@@ -1,0 +1,539 @@
+/* =========================================================
+   Текущий урок в классе — премиум-дизайн (изолированный)
+   ========================================================= */
+
+.lesson-page {
+    width: 100%;
+    padding: 50px 20px 70px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-attachment: fixed;
+    min-height: calc(100vh - 120px);
+    font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #2c3e50;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Декоративные светящиеся круги на фоне */
+.lesson-page::before,
+.lesson-page::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+}
+.lesson-page::before {
+    width: 380px; height: 380px;
+    background: #6a82fb;
+    top: -80px; left: -80px;
+}
+.lesson-page::after {
+    width: 420px; height: 420px;
+    background: #4a6fa5;
+    bottom: -120px; right: -100px;
+}
+
+.lesson-page * {
+    box-sizing: border-box;
+}
+
+/* ===== Контейнер ===== */
+.lesson-page .lesson-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 760px;
+    padding: 42px 40px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+    animation: lessonFadeIn 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@keyframes lessonFadeIn {
+    from { opacity: 0; transform: translateY(30px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ===== Шапка ===== */
+.lesson-page .lesson-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.lesson-page .lesson-header-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 84px;
+    height: 84px;
+    font-size: 40px;
+    border-radius: 26px;
+    background: linear-gradient(135deg, #1e3c72, #4a6fa5, #6a82fb);
+    box-shadow:
+        0 16px 34px rgba(30, 60, 114, 0.45),
+        0 0 0 6px rgba(106, 130, 251, 0.12);
+    margin-bottom: 20px;
+    animation: lessonFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes lessonFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-8px) rotate(-3deg); }
+}
+
+.lesson-page .lesson-header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #0f2027;
+    letter-spacing: -0.6px;
+    margin: 0 0 6px;
+}
+
+.lesson-page .lesson-subtitle {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6a82fb;
+    margin: 0;
+}
+
+/* ===== Форма ===== */
+.lesson-page .lesson-form {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+}
+
+.lesson-page .lesson-select-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+    max-width: 280px;
+}
+
+.lesson-page .lesson-select-wrap::after {
+    content: '▾';
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4a6fa5;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.lesson-page .lesson-form select,
+.lesson-page .lesson-form button {
+    padding: 15px 22px;
+    font-size: 16px;
+    font-family: inherit;
+    border-radius: 14px;
+    border: none;
+    outline: none;
+    transition: all 0.25s ease;
+    width: 100%;
+}
+
+.lesson-page .lesson-form select {
+    background: #eef2f7;
+    color: #2c3e50;
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-weight: 600;
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 40px;
+}
+
+.lesson-page .lesson-form select:focus {
+    border-color: #4a6fa5;
+    background: #ffffff;
+    box-shadow: 0 0 0 5px rgba(74, 111, 165, 0.15);
+}
+
+.lesson-page .lesson-form button {
+    background: linear-gradient(135deg, #1e3c72, #4a6fa5, #6a82fb);
+    color: #ffffff;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.4px;
+    box-shadow: 0 12px 26px rgba(30, 60, 114, 0.4);
+    max-width: 200px;
+    padding: 15px 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.lesson-page .lesson-form button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.7s ease;
+}
+
+.lesson-page .lesson-form button:hover::before {
+    transform: translateX(100%);
+}
+
+.lesson-page .lesson-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(30, 60, 114, 0.55);
+}
+
+.lesson-page .lesson-form button:active {
+    transform: translateY(0);
+}
+
+/* ===== Инфо-панель ===== */
+.lesson-page .lesson-info-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 14px;
+    background: linear-gradient(135deg, #f8fbff, #eef2f7);
+    border-radius: 18px;
+    border: 1px solid #e3eaf3;
+}
+
+.lesson-page .lesson-info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 6px;
+    border-radius: 12px;
+    transition: background 0.2s ease;
+}
+
+.lesson-page .lesson-info-item:hover {
+    background: rgba(106, 130, 251, 0.08);
+}
+
+.lesson-page .lesson-info-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+    color: #7f8c9b;
+    margin-bottom: 4px;
+}
+
+.lesson-page .lesson-info-value {
+    font-size: 16px;
+    font-weight: 800;
+    color: #1e3c72;
+}
+
+/* ===== Карточка активного урока ===== */
+.lesson-page .lesson-card {
+    position: relative;
+    padding: 30px 30px 26px;
+    border-radius: 22px;
+    animation: lessonSlideUp 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+}
+
+@keyframes lessonSlideUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.lesson-page .lesson-card-active {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f6ff 100%);
+    box-shadow:
+        0 20px 50px rgba(30, 60, 114, 0.18),
+        0 0 0 1px rgba(106, 130, 251, 0.18) inset;
+}
+
+.lesson-page .lesson-card-active::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #1e3c72, #4a6fa5, #6a82fb, #4a6fa5, #1e3c72);
+    background-size: 200% 100%;
+    animation: lessonGradientShift 4s linear infinite;
+}
+
+@keyframes lessonGradientShift {
+    0%   { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.lesson-page .lesson-card-badge {
+    position: absolute;
+    top: 22px;
+    right: 24px;
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: linear-gradient(135deg, #1e3c72, #4a6fa5);
+    border-radius: 999px;
+    box-shadow: 0 6px 16px rgba(30, 60, 114, 0.35);
+}
+
+.lesson-page .lesson-card-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 26px;
+    padding-right: 130px;
+}
+
+.lesson-page .lesson-card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    font-size: 26px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #e3f2fd, #d6eaf8);
+    box-shadow: 0 6px 14px rgba(41, 128, 185, 0.2);
+    flex-shrink: 0;
+}
+
+.lesson-page .lesson-card-title h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 800;
+    color: #0f2027;
+    letter-spacing: -0.4px;
+    line-height: 1.2;
+}
+
+/* ===== Метаданные урока (плитки) ===== */
+.lesson-page .lesson-meta {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.lesson-page .lesson-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #ffffff;
+    border: 1px solid #e3eaf3;
+    border-radius: 14px;
+    transition: all 0.25s ease;
+}
+
+.lesson-page .lesson-meta-item:hover {
+    border-color: #6a82fb;
+    box-shadow: 0 8px 20px rgba(106, 130, 251, 0.15);
+    transform: translateY(-2px);
+}
+
+.lesson-page .lesson-meta-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #eef2f7, #dde6f2);
+    flex-shrink: 0;
+}
+
+.lesson-page .lesson-meta-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+    font-weight: 700;
+    color: #7f8c9b;
+    margin-bottom: 2px;
+}
+
+.lesson-page .lesson-meta-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e3c72;
+}
+
+/* ===== Прогресс ===== */
+.lesson-page .lesson-progress {
+    height: 10px;
+    background: #e3eaf3;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.lesson-page .lesson-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #1e3c72, #4a6fa5, #6a82fb);
+    border-radius: 999px;
+    transition: width 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 0 12px rgba(106, 130, 251, 0.5);
+}
+
+.lesson-page .lesson-progress-caption {
+    font-size: 12px;
+    font-weight: 600;
+    color: #7f8c9b;
+    text-align: right;
+    letter-spacing: 0.3px;
+}
+
+/* ===== Карточка перемены / конца ===== */
+.lesson-page .lesson-card-break {
+    background: linear-gradient(135deg, #fffdf5 0%, #fff8e1 100%);
+    box-shadow:
+        0 20px 50px rgba(230, 180, 50, 0.22),
+        0 0 0 1px rgba(243, 156, 18, 0.2) inset;
+    text-align: center;
+    padding: 44px 30px;
+}
+
+.lesson-page .lesson-card-break::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #f39c12, #f7b733, #f39c12);
+}
+
+.lesson-page .lesson-big-icon {
+    font-size: 64px;
+    line-height: 1;
+    margin-bottom: 16px;
+    animation: lessonPulseBig 2.4s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes lessonPulseBig {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.12); }
+}
+
+.lesson-page .lesson-card-break h3 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #8a5a00;
+    letter-spacing: -0.4px;
+}
+
+.lesson-page .lesson-card-break p {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #6d4c41;
+    background: transparent;
+    padding: 0;
+    display: block;
+}
+
+/* ===== Пустое состояние ===== */
+.lesson-page .lesson-empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: #7f8c9b;
+}
+
+.lesson-page .lesson-empty-icon {
+    font-size: 60px;
+    margin-bottom: 14px;
+    opacity: 0.75;
+}
+
+.lesson-page .lesson-empty p {
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 700px) {
+    .lesson-page {
+        padding: 24px 12px 40px;
+    }
+
+    .lesson-page .lesson-container {
+        padding: 28px 20px;
+        border-radius: 22px;
+    }
+
+    .lesson-page .lesson-header-icon {
+        width: 68px;
+        height: 68px;
+        font-size: 32px;
+        border-radius: 20px;
+    }
+
+    .lesson-page .lesson-header h1 {
+        font-size: 21px;
+    }
+
+    .lesson-page .lesson-form {
+        flex-direction: column;
+    }
+
+    .lesson-page .lesson-select-wrap,
+    .lesson-page .lesson-form button {
+        max-width: 100%;
+    }
+
+    .lesson-page .lesson-info-bar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lesson-page .lesson-card {
+        padding: 24px 20px;
+    }
+
+    .lesson-page .lesson-card-badge {
+        position: static;
+        display: inline-block;
+        margin-bottom: 14px;
+    }
+
+    .lesson-page .lesson-card-title {
+        padding-right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .lesson-page .lesson-card-title h3 {
+        font-size: 20px;
+    }
+
+    .lesson-page .lesson-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .lesson-page .lesson-card-break {
+        padding: 32px 20px;
+    }
+
+    .lesson-page .lesson-big-icon {
+        font-size: 52px;
+    }
+}
